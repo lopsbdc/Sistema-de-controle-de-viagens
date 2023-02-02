@@ -1,0 +1,41 @@
+<ion-nav-view>
+<ion-side-menus> 
+  <!-- Main Content -->
+ <ion-side-menu-content>
+ 
+  <ion-nav-bar class="bar-positive">
+   <ion-nav-back-button>
+   </ion-nav-back-button>
+
+   <ion-nav-buttons side="left"> 
+     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+     </button>
+   </ion-nav-buttons>
+ </ion-nav-bar>
+ <ion-nav-view name="menuContent"></ion-nav-view> <!--Indicar que vai ser aberta no menuContent-->
+ 
+ </ion-side-menu-content>
+
+ <!-- Left Side Menu -->
+ <ion-side-menu side="left">
+ 
+ <ion-header-bar class="bar-stable">
+    <h1 class="title">Left</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item menu-close href="#/app/search"> 
+        Search
+      </ion-item>
+      <ion-item menu-close href="#/app/browse">
+        Browse
+      </ion-item>
+      <ion-item menu-close href="#/app/playlists">
+        Playlists
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+ </ion-side-menu>
+ </ion-side-menus>
+ </ion-nav-view>

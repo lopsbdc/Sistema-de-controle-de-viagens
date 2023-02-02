@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBZoSCPBvWbaI_tczlokg8d774-0l0yvfo&sensor=true"></script>
+
+
+
+        <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+  
+
+
+    
+<ion-nav-view></ion-nav-view>
+
+<script id="templates/menu.html" type="text/ng-template">
+ <ion-side-menus>
+  <!-- Main Content -->
+ <ion-side-menu-content>
+ 
+  <ion-nav-bar class="bar bar-header bar-positive">
+   <ion-nav-back-button>
+   </ion-nav-back-button>
+
+   <ion-nav-buttons side="left">
+     <button class="button button-icon button-dark ion-navicon" menu-toggle="left">
+     </button>
+   </ion-nav-buttons>
+ </ion-nav-bar>
+ <ion-nav-view name="menuContent"></ion-nav-view>
+ 
+ </ion-side-menu-content>
+
+
+
+
+ <!-- Left Side Menu -->
+ <ion-side-menu side="left">
+ 
+ <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title" style="color:white">Menu</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+
+	  <ion-item menu-close href="#/app/Principal">
+        <i class="icon ion-ios-game-controller-a">&nbsp;&nbsp;&nbsp;Inicio</i>
+      </ion-item>
+
+      <ion-item menu-close href="#/app/duvidas">
+        <i class="icon ion-ios-help">&nbsp;&nbsp;&nbsp;Duvidas Frequentes</i>
+      </ion-item>
+
+      <ion-item menu-close href="#/app/registro">
+        <i class="icon ion-ios-paper">&nbsp;&nbsp;&nbsp;Registro de Ponto</i>
+      </ion-item>
+
+      <ion-item menu-close href="#/app/consulta">
+        <i class="icon ion-ios-paper">&nbsp;&nbsp;&nbsp;Consulta de Pontos Registrados</i>
+      </ion-item>
+
+      <ion-item menu-close href="#/app/versao">
+        <i class="icon ion-ios-paper">&nbsp;&nbsp;&nbsp;Versão do Aplicativo</i>
+      </ion-item>
+
+      <ion-item>
+        <i>&nbsp;&nbsp;&nbsp;Parceiros:</i>
+      </ion-item>
+
+      <ion-item>
+        <i class="icon ion-ios-home">&nbsp;&nbsp;&nbsp;Rede Globo (Carga Pesada)</i>
+      </ion-item>
+
+      <ion-item>
+        <i class="icon ion-ios-paper">&nbsp;&nbsp;&nbsp;Scania</i>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+  
+ </ion-side-menu>
+ </ion-side-menus>
+</script>
+
+
+
+
+
+
+
+<script id="templates/duvidas.html" type="text/ng-template" >
+	<ion-view view-title="Duvidas Frequentes" align="middle" style="background-image: url('../img/van.jpg');">
+	<h2 style="color: orange"> <b><br/>1) Cliquei no botão "Ver Horarios" e nada acontece (feijoada).</b> </h2>
+	<h4 style="color: white; font-weight: bold;"> - O sistema irá buscar no banco de dados, essa consulta pode demorar alguns minutos. Apenas aguarde ! </h4>
+	<br/>
+	<h2 style="color: orange"> <b><br/>2) O menu não abre. Porque ?</b> </h2>
+	<h4 style="color: white; font-weight: bold;"> - Pode ser o seu navegador, ou ele está apenas desatualizado. Tente recarregar a página; se não der certo, atualize seu navegador !</h4>
+	<h2 style="color: orange"> <b><br/>3) Existe algum contato para deixar sugestoes ?</b> </h2>
+	<h4 style="color: white; font-weight: bold;"> - Claro ! Envie sua sugestão para o email: contato@abwtravels.com.br</h4>
+</ion-view>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script id="templates/versao.html" type="text/ng-template" >
+  <ion-view view-title="Versão" align="middle" style="background-image: url('../img/van.jpg');">
+  <h2 style="color: green"> <b><br/>Versão Atual: 4.5.2</b> </h2>
+  <h4 style="color: white; font-weight: bold;"> - Correção de bugs </h4>
+  <h4 style="color: white; font-weight: bold;"> - Correção de erros de português (Ops!) </h4>
+  <h4 style="color: white; font-weight: bold;"> - Menos digitação: Agora os campos são selecionaveis ! </h4>
+  <br/>
+  <h2 style="color: orange"> <b><br/>Versão 4.5.1</b> </h2>
+  <h4 style="color: white; font-weight: bold;"> - Aumento do campo observação </h4>
+  <h4 style="color: white; font-weight: bold;"> - Correção de pequenos bugs </h4>
+  <br/>
+  <h2 style="color: orange"> <b><br/>Versão 4.5.0</b> </h2>
+  <h4 style="color: white; font-weight: bold;"> - Troca de Layout </h4>
+  <h4 style="color: white; font-weight: bold;"> - Correção de diversos bugs </h4>
+  <h4 style="color: white; font-weight: bold;"> - Espaçamento melhorado </h4>
+  <h4 style="color: white; font-weight: bold;"> - Botões maiores ! </h4>
+  <br/>
+</ion-view>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="templates/registro.html" type="text/ng-template" >
+	<ion-view view-title="Registro de Ponto" align="middle">
+		<ion-header-bar class="bar bar-header bar-positive">
+  <div class="buttons">
+    <h1 class="title">Registro de Ponto</h1>
+  </div>
+
+</ion-header-bar>
+
+<ion-content ng-controller="AppCtrl" class="padding" style="background-image: url('../img/wlp.jpg');">
+  
+
+  <label for="jornada" style="color: white; font-weight: bold;"> Escolha o tipo de Jornada: </label><br>
+    <select name="jornada" ng-model="registro.tipo">
+      <option value="1 - Jornada (Completa)">Jornada Completa</option>
+      <option value="2 - Direção">Direção</option>
+      <option value="3 - Refeição">Refeição</option>
+      <option value="4 - Descanso">Descanso</option>
+      <option value="5 - Carga">Direção</option>
+      <option value="6 - Descarga">Descarga</option>
+      <option value="7 - Abastecimento">Abastecimento</option>
+      <option value="8 - Tempo no Cliente">Tempo no Cliente</option>
+      <option value="9 - Fiscalização">Fiscalização</option>
+      <option value="10 - Manutenção">Manutenção</option>
+      <option value="11 - Pernoite">Pernoite</option>
+    </select>
+
+    <br>
+    <br>
+
+    <label for="datai" style="color: white; font-weight: bold;"> Data Inicio </label><br>
+    <select name="datai" ng-model="registro.dtinicio">
+      <option value="01">1</option>
+      <option value="02">2</option>
+      <option value="03">3</option>
+      <option value="04">4</option>
+      <option value="05">5</option>
+      <option value="06">6</option>
+      <option value="07">7</option>
+      <option value="08">8</option>
+      <option value="09">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+    </select>
+
+    <br>
+
+    <label for="mesi" style="color: white; font-weight: bold;"> Mês Inicio </label><br>
+    <select name="mesi" ng-model="registro.mesinicio">
+      <option value="01">1 - Janeiro</option>
+      <option value="02">2 - Fevereiro</option>
+      <option value="03">3 - Março</option>
+      <option value="04">4 - Abril</option>
+      <option value="05">5 - Maio</option>
+      <option value="06">6 - Junho</option>
+      <option value="07">7 - Julho</option>
+      <option value="08">8 - Agosto</option>
+      <option value="09">9 - Setembro</option>
+      <option value="10">10 - Outubro</option>
+      <option value="11">11 - Novembro</option>
+      <option value="12">12 - Dezembro</option>
+    </select>
+
+    <br>
+    <br>
+
+    <label for="dataf" style="color: white; font-weight: bold;"> Data Fim </label><br>
+    <select name="dataf" ng-model="registro.dtfim">
+      <option value="01">1</option>
+      <option value="02">2</option>
+      <option value="03">3</option>
+      <option value="04">4</option>
+      <option value="05">5</option>
+      <option value="06">6</option>
+      <option value="07">7</option>
+      <option value="08">8</option>
+      <option value="09">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+    </select>
+
+    <br>
+
+    <label for="mesf" style="color: white; font-weight: bold;"> Mês Fim </label><br>
+    <select name="mesf" ng-model="registro.mesfim">
+      <option value="01">1 - Janeiro</option>
+      <option value="02">2 - Fevereiro</option>
+      <option value="03">3 - Março</option>
+      <option value="04">4 - Abril</option>
+      <option value="05">5 - Maio</option>
+      <option value="06">6 - Junho</option>
+      <option value="07">7 - Julho</option>
+      <option value="08">8 - Agosto</option>
+      <option value="09">9 - Setembro</option>
+      <option value="10">10 - Outubro</option>
+      <option value="11">11 - Novembro</option>
+      <option value="12">12 - Dezembro</option>
+    </select>
+
+   
+    <br>
+    <br>
+
+
+    <label for="horai" style="color: white; font-weight: bold;"> Hora Inicio </label><br>
+    <select name="horai" ng-model="registro.horainicio">
+      <option value="01">1 A.M.</option>
+      <option value="02">2 A.M.</option>
+      <option value="03">3 A.M.</option>
+      <option value="04">4 A.M.</option>
+      <option value="05">5 A.M.</option>
+      <option value="06">6 A.M.</option>
+      <option value="07">7 A.M.</option>
+      <option value="08">8 A.M.</option>
+      <option value="09">9 A.M.</option>
+      <option value="10">10 A.M.</option>
+      <option value="11">11 A.M.</option>
+      <option value="12">12 A.M.</option>
+      <option value="13">1 P.M.</option>
+      <option value="14">2 P.M.</option>
+      <option value="15">3 P.M.</option>
+      <option value="16">4 P.M.</option>
+      <option value="17">5 P.M.</option>
+      <option value="18">6 P.M.</option>
+      <option value="19">7 P.M.</option>
+      <option value="20">8 P.M.</option>
+      <option value="21">9 P.M.</option>
+      <option value="22">10 P.M.</option>
+      <option value="23">11 P.M.</option>
+      <option value="00">12 P.M.</option>
+    </select>
+
+    <br>
+
+    <label for="mini" style="color: white; font-weight: bold;"> Minuto Inicio </label><br>
+    <select name="mini" ng-model="registro.mininicio">
+      <option value="00">00</option>
+      <option value="05">05</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+      <option value="50">50</option>
+      <option value="55">55</option>
+      
+    </select>
+
+
+    <br>
+    <br>
+
+
+    <label for="horaf" style="color: white; font-weight: bold;"> Hora Fim </label><br>
+    <select name="horaf" ng-model="registro.horafim">
+      <option value="01">1 A.M.</option>
+      <option value="02">2 A.M.</option>
+      <option value="03">3 A.M.</option>
+      <option value="04">4 A.M.</option>
+      <option value="05">5 A.M.</option>
+      <option value="06">6 A.M.</option>
+      <option value="07">7 A.M.</option>
+      <option value="08">8 A.M.</option>
+      <option value="09">9 A.M.</option>
+      <option value="10">10 A.M.</option>
+      <option value="11">11 A.M.</option>
+      <option value="12">12 A.M.</option>
+      <option value="13">1 P.M.</option>
+      <option value="14">2 P.M.</option>
+      <option value="15">3 P.M.</option>
+      <option value="16">4 P.M.</option>
+      <option value="17">5 P.M.</option>
+      <option value="18">6 P.M.</option>
+      <option value="19">7 P.M.</option>
+      <option value="20">8 P.M.</option>
+      <option value="21">9 P.M.</option>
+      <option value="22">10 P.M.</option>
+      <option value="23">11 P.M.</option>
+      <option value="00">12 P.M.</option>
+    </select>
+
+    <br>
+
+    <label for="minf" style="color: white; font-weight: bold;"> Minuto Fim </label><br>
+    <select name="minf" ng-model="registro.minfim">
+      <option value="00">00</option>
+      <option value="05">05</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+      <option value="50">50</option>
+      <option value="55">55</option>
+      
+    </select>
+
+    <br> <br> <br>
+
+   <label class="item item-input">
+   <input type="text" id="observasaum" placeholder="Observação" ng-model="registro.obs">
+   </label>
+   
+   <br> <br>
+
+   <input id="latitude1" type="hidden"  ng-model="registro.lat" value="" />
+   <input id="longitude1" type="hidden" ng-model="registro.long" value="" />
+
+
+<button class="button button-block bar-positive" ng-click="insere()"> Inserir Jornada </button>
+
+
+  
+</ion-content>  
+</ion-view>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script id="templates/consulta.html" type="text/ng-template" >
+
+  <ion-view view-title="Consulta de Pontos Registrados" align="middle">
+    <ion-header-bar class="bar bar-header bar-positive">
+  <div class="buttons">
+    <h1 class="title">Consulta de Horarios Registrados</h1>
+  </div>
+
+</ion-header-bar>
+
+<ion-content ng-controller="AppCtrl" class="padding" style="background-image: url('../img/wlp.jpg');">
+  
+
+  <button class="button button-block" ng-click="consulta()"> 
+    Mostrar Horarios
+  </button>
+
+  
+  <ion-list show-delete="showDelete">
+      <ion-item ng-repeat="registro in jornada" class="item-text-wrap">
+          
+          <section>
+          Tipo de Jornada: {{ registro.tipo }}<br> <br>
+          Data Inicio: {{ registro.dtinicio }}/{{ registro.mesinicio }} <br>
+          Data Fim: {{ registro.dtfim }}/{{ registro.mesfim }}<br> <br>
+          Hora Inicio: {{ registro.horainicio }}:{{ registro.mininicio }}<br>
+          Hora Fim: {{ registro.horafim }}:{{ registro.minfim }} <br> <br>
+          Observação: {{ registro.obs }} <br> <br>
+          Latitude:   {{registro.latitude}} <br>
+          Longitude: {{ registro.longitude}} <br>
+          </section>
+           
+         </ion-item>
+
+  </ion-list>
+</ion-content>  
+</ion-view>
+</script>
+
+
+
+
+
+
+
+
+<script id="templates/principal.html" type="text/ng-template">
+    <ion-view view-title="ABW Travels" align="middle">
+      <ion-pane>
+      <ion-content class="padding" style="background-image: url('../img/wlp.jpg');">
+        <h1 style="color: orange; text-align: center" > Bem vindo a ABW Travels !</h1>
+
+        <h2 style="color: red; font-weight: bold; text-align: center;"> Lembre-se sempre de usar cinto de segurança, e NUNCA dirigir com sono ! </h2>
+
+        <br>
+
+        <h3 style="color: white; font-weight: bold; text-align: center;"> Agora, as melhores frases de caminhão da semana: </h3>
+
+        <h4 style="color: white; font-weight: bold; text-align: center;"> 1º "3 eixos envenenados e 1 machão invocado !" </h4>
+        <h4 style="color: white; font-weight: bold; text-align: center;"> 2º "Não me siga, posso estar perdido." </h4>
+        <h4 style="color: white; font-weight: bold; text-align: center;"> 3º "Não sou mágico, mas vivo nesse truck." </h4>
+
+
+          <img src="img/carga pesada.gif" id="Trivago">
+
+          
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+  </ion-view>
+</script>
+
+
+
+</body>
+</html>

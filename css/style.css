@@ -1,0 +1,59 @@
+
+.custom-back{
+	background-image: url('../img/wlp.jpg')	;
+	background-size: 500px 700px;
+	background-repeat: no-repeat; 
+}
+
+#btt {
+	height: 40px;
+}
+#yugih1{
+	color: white;
+	text-align: center;
+}
+#yugih1_title{
+	color: white;
+	text-align: center;
+}
+#yugih4{
+	text-align: center;
+	color: white;
+}
+
+#yugih4_2{
+	color: white;
+	text-align: center;
+}
+.noti{
+	background-color: gray;
+}
+
+#observasaum{
+	height: 50px;
+	width: 50px;
+	size: 500px;
+
+}
+
+#Trivago {
+	left: 500px;
+}
+section {
+	background-color: red;
+	background: rgba(255,255,255,0.9);
+}
+
+#btt2 {
+	height: 40px;
+}
+
+.custom-red {
+	color: white !important;
+	background-color: red !important;
+}
+
+#sec2 {
+	background-color: red;
+	background: rgba(255,255,255,0);
+}
